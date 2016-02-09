@@ -56,8 +56,8 @@ existing rimd::SMF.</p>
 <h1 id='writing-an-existing-smf-to-a-file' class='section-header'><a href='#writing-an-existing-smf-to-a-file'>Writing an existing SMF to a file</a></h1><pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>rimd</span>::{<span class='ident'>SMF</span>,<span class='ident'>SMFWriter</span>};
 <span class='comment'>// Create smf</span>
-<span class='comment'>// let writer = SMFWriter::from_smf(smf);</span>
-<span class='comment'>// let result = writer.write_to_file(Path::new(&quot;/path/to/file.smf&quot;));</span>
+<span class='kw'>let</span> <span class='ident'>writer</span> <span class='op'>=</span> <span class='ident'>SMFWriter</span>::<span class='ident'>from_smf</span>(<span class='ident'>smf</span>);
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>writer</span>.<span class='ident'>write_to_file</span>(<span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;/path/to/file.smf&quot;</span>));
 <span class='comment'>// handle result</span></pre>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../rimd/struct.SMFWriter.html' title='rimd::SMFWriter'>SMFWriter</a></code></h3><div class='impl-items'><h4 id='method.new_with_division' class='method'><code>fn <a href='#method.new_with_division' class='fnname'>new_with_division</a>(ticks: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i16.html'>i16</a>) -&gt; <a class='struct' href='../rimd/struct.SMFWriter.html' title='rimd::SMFWriter'>SMFWriter</a></code></h4>
 <div class='docblock'><p>Create a new SMFWriter with the given number of units per
