@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MetaEvent` struct in crate `rimd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MetaEvent">
+
+    <title>rimd::MetaEvent - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>rimd</a></p><script>window.sidebarCurrent = {name: 'MetaEvent', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rimd</a>::<wbr><a class='struct' href=''>MetaEvent</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-525' class='srclink' href='../src/rimd/meta.rs.html#81-85' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MetaEvent {
+    pub command: <a class='enum' href='../rimd/enum.MetaCommand.html' title='rimd::MetaCommand'>MetaCommand</a>,
+    pub length: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>,
+    pub data: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;,
+}</pre><div class='docblock'><p>Meta event building and parsing.  See
+<a href="http://cs.fit.edu/%7Eryan/cse4051/projects/midi/midi.html#meta_event">http://cs.fit.edu/~ryan/cse4051/projects/midi/midi.html#meta_event</a>
+for a description of the various meta events and their formats</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.command'><code>command</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.length'><code>length</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.data'><code>data</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h3><div class='impl-items'><h4 id='method.data_as_u64' class='method'><code>fn <a href='#method.data_as_u64' class='fnname'>data_as_u64</a>(&amp;self, bytes: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
+<div class='docblock'><p>Turn <code>bytes</code> bytes of the data of this event into a u64</p>
+</div><h4 id='method.data_as_text' class='method'><code>fn <a href='#method.data_as_text' class='fnname'>data_as_text</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.FromUtf8Error.html' title='collections::string::FromUtf8Error'>FromUtf8Error</a>&gt;</code></h4>
+<div class='docblock'><p>Parse the data of this event into a utf8 string</p>
+</div><h4 id='method.next_event' class='method'><code>fn <a href='#method.next_event' class='fnname'>next_event</a>(reader: &amp;mut <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a>, <a class='enum' href='../rimd/enum.MetaError.html' title='rimd::MetaError'>MetaError</a>&gt;</code></h4>
+<div class='docblock'><p>Extract the next meta event from a reader</p>
+</div><h4 id='method.sequence_number' class='method'><code>fn <a href='#method.sequence_number' class='fnname'>sequence_number</a>(sequence_number: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u16.html'>u16</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a sequence number meta event</p>
+</div><h4 id='method.text_event' class='method'><code>fn <a href='#method.text_event' class='fnname'>text_event</a>(text: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a text meta event</p>
+</div><h4 id='method.copyright_notice' class='method'><code>fn <a href='#method.copyright_notice' class='fnname'>copyright_notice</a>(copyright: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a copyright notice meta event</p>
+</div><h4 id='method.sequence_or_track_name' class='method'><code>fn <a href='#method.sequence_or_track_name' class='fnname'>sequence_or_track_name</a>(name: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a name meta event</p>
+</div><h4 id='method.instrument_name' class='method'><code>fn <a href='#method.instrument_name' class='fnname'>instrument_name</a>(name: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create an instrument name meta event</p>
+</div><h4 id='method.lyric_text' class='method'><code>fn <a href='#method.lyric_text' class='fnname'>lyric_text</a>(text: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a lyric text meta event</p>
+</div><h4 id='method.marker_text' class='method'><code>fn <a href='#method.marker_text' class='fnname'>marker_text</a>(text: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a marker text meta event</p>
+</div><h4 id='method.cue_point' class='method'><code>fn <a href='#method.cue_point' class='fnname'>cue_point</a>(text: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a cue point meta event</p>
+</div><h4 id='method.midichannel_prefix_assignment' class='method'><code>fn <a href='#method.midichannel_prefix_assignment' class='fnname'>midichannel_prefix_assignment</a>(channel: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a midi channel prefix assignment meta event</p>
+</div><h4 id='method.midiport_prefix_assignment' class='method'><code>fn <a href='#method.midiport_prefix_assignment' class='fnname'>midiport_prefix_assignment</a>(port: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a midi port prefix assignment meta event</p>
+</div><h4 id='method.end_of_track' class='method'><code>fn <a href='#method.end_of_track' class='fnname'>end_of_track</a>() -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create an end of track meta event</p>
+</div><h4 id='method.tempo_setting' class='method'><code>fn <a href='#method.tempo_setting' class='fnname'>tempo_setting</a>(tempo: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create an event to set track tempo.  This is stored
+as a 24-bit value.  This method will fail an assertion if
+the supplied tempo is greater than 2<sup>24.</sup></p>
+</div><h4 id='method.smpte_offset' class='method'><code>fn <a href='#method.smpte_offset' class='fnname'>smpte_offset</a>(hours: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, minutes: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, seconds: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, frames: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, fractional: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create an smpte offset meta event</p>
+</div><h4 id='method.time_signature' class='method'><code>fn <a href='#method.time_signature' class='fnname'>time_signature</a>(numerator: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, denominator: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, clocks_per_tick: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, num_32nd_notes_per_24_clocks: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a time signature event.
+Time signature of the form:
+<code>numerator</code>/2<sup><code>denominator</code></sup>
+ eg: 6/8 would be specified using <code>numerator</code>=6, <code>denominator</code>=3</p>
+
+<p>The parameter <code>clocks_per_tick</code> is the number of MIDI Clocks per metronome tick.
+Normally, there are 24 MIDI Clocks per quarter note.
+However, some software allows this to be set by the user.
+The parameter <code>num_32nd_notes_per_24_clocks</code> defines this in terms of the
+number of 1/32 notes which make up the usual 24 MIDI Clocks
+(the &#39;standard&#39; quarter note).  8 is standard</p>
+</div><h4 id='method.key_signature' class='method'><code>fn <a href='#method.key_signature' class='fnname'>key_signature</a>(sharps_flats: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, major_minor: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>Create a Key Signature event
+ expressed as the number of sharps or flats, and a major/minor flag.
+<code>sharps_flats</code> of 0 represents a key of C, negative numbers represent
+&#39;flats&#39;, while positive numbers represent &#39;sharps&#39;.</p>
+</div><h4 id='method.sequencer_specific_event' class='method'><code>fn <a href='#method.sequencer_specific_event' class='fnname'>sequencer_specific_event</a>(data: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<div class='docblock'><p>This is the MIDI-file equivalent of the System Exclusive Message.
+sequencer-specific directives can be incorporated into a
+MIDI file using this event.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html' title='core::fmt::Display'>Display</a> for <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a></code></h3><div class='impl-items'><h4 id='method.fmt-1' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "rimd";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

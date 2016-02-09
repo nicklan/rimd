@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["MetaCommand",""],["MetaError","An error that can occur parsing a meta command"]],"struct":[["MetaEvent","Meta event building and parsing.  See http://cs.fit.edu/~ryan/cse4051/projects/midi/midi.html#meta_event for a description of the various meta events and their formats"]]});

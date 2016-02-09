@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SMFWriter","An SMFWriter is used to write an SMF to a file.  It can be either constructed empty and have tracks added, or created from an existing rimd::SMF."]]});

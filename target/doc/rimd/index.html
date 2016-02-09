@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `rimd` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, rimd">
+
+    <title>rimd - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'rimd', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>rimd</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/rimd/lib.rs.html#1-273' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>rimd is a set of utilities to deal with midi messages and standard
+midi files (SMF).  It handles both standard midi messages and the meta
+messages that are found in SMFs.</p>
+
+<p>rimd is fairly low level, and  messages are stored and accessed in
+their underlying format (i.e. a vector of u8s).  There are some
+utility methods for accessing the various pieces of a message, and
+for constructing new messages.</p>
+
+<p>For a description of the underlying format of midi messages see:<br/>
+<a href="http://www.midi.org/techspecs/midimessages.php">http://www.midi.org/techspecs/midimessages.php</a><br/>
+For a description of the underlying format of meta messages see:<br/>
+<a href="http://cs.fit.edu/%7Eryan/cse4051/projects/midi/midi.html#meta_event">http://cs.fit.edu/~ryan/cse4051/projects/midi/midi.html#meta_event</a></p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.AbsoluteEvent.html'
+                               title='rimd::AbsoluteEvent'>AbsoluteEvent</a></td>
+                        <td class='docblock short'>
+                             <p>An AbsoluteEvent is an event that has an absolute time
+This is useful for apps that want to store events internally
+with absolute times and then quickly build an SMF file for saving etc...</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MetaEvent.html'
+                               title='rimd::MetaEvent'>MetaEvent</a></td>
+                        <td class='docblock short'>
+                             <p>Meta event building and parsing.  See
+<a href="http://cs.fit.edu/%7Eryan/cse4051/projects/midi/midi.html#meta_event">http://cs.fit.edu/~ryan/cse4051/projects/midi/midi.html#meta_event</a>
+for a description of the various meta events and their formats</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MidiMessage.html'
+                               title='rimd::MidiMessage'>MidiMessage</a></td>
+                        <td class='docblock short'>
+                             <p>Midi message building and parsing.  See
+<a href="http://www.midi.org/techspecs/midimessages.php">http://www.midi.org/techspecs/midimessages.php</a> for a description
+of the various Midi messages that exist.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SMF.html'
+                               title='rimd::SMF'>SMF</a></td>
+                        <td class='docblock short'>
+                             <p>A standard midi file</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SMFBuilder.html'
+                               title='rimd::SMFBuilder'>SMFBuilder</a></td>
+                        <td class='docblock short'>
+                             <p>An SMFBuilder can be used to create an SMF file.  This is done by
+adding tracks to the builder via <code>add_track</code> and then adding
+events to each track.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SMFWriter.html'
+                               title='rimd::SMFWriter'>SMFWriter</a></td>
+                        <td class='docblock short'>
+                             <p>An SMFWriter is used to write an SMF to a file.  It can be either
+constructed empty and have tracks added, or created from an
+existing rimd::SMF.</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Track.html'
+                               title='rimd::Track'>Track</a></td>
+                        <td class='docblock short'>
+                             <p>A sequence of midi/meta events</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.TrackEvent.html'
+                               title='rimd::TrackEvent'>TrackEvent</a></td>
+                        <td class='docblock short'>
+                             <p>An event occuring in the track.</p>
+
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Event.html'
+                               title='rimd::Event'>Event</a></td>
+                        <td class='docblock short'>
+                             <p>An event can be either a midi message or a meta event</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.MetaCommand.html'
+                               title='rimd::MetaCommand'>MetaCommand</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.MetaError.html'
+                               title='rimd::MetaError'>MetaError</a></td>
+                        <td class='docblock short'>
+                             <p>An error that can occur parsing a meta command</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.MidiError.html'
+                               title='rimd::MidiError'>MidiError</a></td>
+                        <td class='docblock short'>
+                             <p>An error that can occur trying to parse a midi message</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.SMFError.html'
+                               title='rimd::SMFError'>SMFError</a></td>
+                        <td class='docblock short'>
+                             <p>An error that occured in parsing an SMF</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.SMFFormat.html'
+                               title='rimd::SMFFormat'>SMFFormat</a></td>
+                        <td class='docblock short'>
+                             <p>Format of the SMF</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Status.html'
+                               title='rimd::Status'>Status</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.note_num_to_name.html'
+                               title='rimd::note_num_to_name'>note_num_to_name</a></td>
+                        <td class='docblock short'>
+                             <p>convert a midi note number to a name</p>
+
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "rimd";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

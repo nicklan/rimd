@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["MidiError","An error that can occur trying to parse a midi message"],["Status",""]],"struct":[["MidiMessage","Midi message building and parsing.  See http://www.midi.org/techspecs/midimessages.php for a description of the various Midi messages that exist."]]});

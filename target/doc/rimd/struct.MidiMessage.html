@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MidiMessage` struct in crate `rimd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MidiMessage">
+
+    <title>rimd::MidiMessage - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>rimd</a></p><script>window.sidebarCurrent = {name: 'MidiMessage', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rimd</a>::<wbr><a class='struct' href=''>MidiMessage</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-281' class='srclink' href='../src/rimd/midi.rs.html#85-87' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MidiMessage {
+    pub data: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;,
+}</pre><div class='docblock'><p>Midi message building and parsing.  See
+<a href="http://www.midi.org/techspecs/midimessages.php">http://www.midi.org/techspecs/midimessages.php</a> for a description
+of the various Midi messages that exist.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.data'><code>data</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h3><div class='impl-items'><h4 id='method.status' class='method'><code>fn <a href='#method.status' class='fnname'>status</a>(&amp;self) -&gt; <a class='enum' href='../rimd/enum.Status.html' title='rimd::Status'>Status</a></code></h4>
+<div class='docblock'><p>Return the status (type) of this message</p>
+</div><h4 id='method.channel' class='method'><code>fn <a href='#method.channel' class='fnname'>channel</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></h4>
+<div class='docblock'><p>Return the channel this message is on (TODO: return 0 for messages with no channel)</p>
+</div><h4 id='method.data' class='method'><code>fn <a href='#method.data' class='fnname'>data</a>(&amp;self, index: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></h4>
+<div class='docblock'><p>Get te data at index <code>index</code> from this message.  Status is at
+index 0</p>
+</div><h4 id='method.from_bytes' class='method'><code>fn <a href='#method.from_bytes' class='fnname'>from_bytes</a>(bytes: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<div class='docblock'><p>Create a midi message from a vector of bytes</p>
+</div><h4 id='method.next_message_given_status' class='method'><code>fn <a href='#method.next_message_given_status' class='fnname'>next_message_given_status</a>(stat: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, reader: &amp;mut <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a>, <a class='enum' href='../rimd/enum.MidiError.html' title='rimd::MidiError'>MidiError</a>&gt;</code></h4>
+<div class='docblock'><p>Get the next midi message from the reader given that the
+status <code>stat</code> has just been read</p>
+</div><h4 id='method.next_message_running_status' class='method'><code>fn <a href='#method.next_message_running_status' class='fnname'>next_message_running_status</a>(stat: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, databyte: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, reader: &amp;mut <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a>, <a class='enum' href='../rimd/enum.MidiError.html' title='rimd::MidiError'>MidiError</a>&gt;</code></h4>
+<div class='docblock'><p>Get the next midi message from the reader given that there&#39;s a running
+status of <code>stat</code> and that in place of a status was read <code>databyte</code></p>
+</div><h4 id='method.next_message' class='method'><code>fn <a href='#method.next_message' class='fnname'>next_message</a>(reader: &amp;mut <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a>, <a class='enum' href='../rimd/enum.MidiError.html' title='rimd::MidiError'>MidiError</a>&gt;</code></h4>
+<div class='docblock'><p>Extract next midi message from a reader</p>
+</div><h4 id='method.note_on' class='method'><code>fn <a href='#method.note_on' class='fnname'>note_on</a>(note: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, velocity: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, channel: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<div class='docblock'><p>Create a note on message</p>
+</div><h4 id='method.note_off' class='method'><code>fn <a href='#method.note_off' class='fnname'>note_off</a>(note: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, velocity: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, channel: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<div class='docblock'><p>Create a note off message</p>
+</div><h4 id='method.polyphonic_aftertouch' class='method'><code>fn <a href='#method.polyphonic_aftertouch' class='fnname'>polyphonic_aftertouch</a>(note: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, pressure: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, channel: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<div class='docblock'><p>Create a polyphonic aftertouch message
+This message is most often sent by pressing down on the key after it &quot;bottoms out&quot;.</p>
+</div><h4 id='method.control_change' class='method'><code>fn <a href='#method.control_change' class='fnname'>control_change</a>(controler: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, data: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, channel: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<div class='docblock'><p>Create a control change message
+This message is sent when a controller value changes. Controllers include devices such as
+pedals and levers. Controller numbers 120-127 are reserved as &quot;Channel Mode Messages&quot;.</p>
+</div><h4 id='method.program_change' class='method'><code>fn <a href='#method.program_change' class='fnname'>program_change</a>(program: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, channel: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<div class='docblock'><p>Create a program change message
+This message sent when the patch number changes. <code>program</code> is the new program number.</p>
+</div><h4 id='method.channel_aftertouch' class='method'><code>fn <a href='#method.channel_aftertouch' class='fnname'>channel_aftertouch</a>(pressure: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, channel: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<div class='docblock'><p>Create a channel aftertouch
+This message is most often sent by pressing down on the key after it &quot;bottoms out&quot;. This message
+is different from polyphonic after-touch. Use this message to send the single greatest pressure
+value (of all the current depressed keys). <code>pressure</code> is the pressure value.</p>
+</div><h4 id='method.pitch_bend' class='method'><code>fn <a href='#method.pitch_bend' class='fnname'>pitch_bend</a>(lsb: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, msb: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>, channel: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<div class='docblock'><p>Create a pitch bench message
+This message is sent to indicate a change in the pitch bender (wheel or lever, typically).
+The pitch bender is measured by a fourteen bit value. Center (no pitch change) is 2000H.
+Sensitivity is a function of the transmitter. <code>lsb</code> are the least significant 7 bits.
+<code>msb</code> are the most significant 7 bits.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html' title='core::fmt::Display'>Display</a> for <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a></code></h3><div class='impl-items'><h4 id='method.fmt-1' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "rimd";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

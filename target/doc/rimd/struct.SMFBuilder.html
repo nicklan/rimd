@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SMFBuilder` struct in crate `rimd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SMFBuilder">
+
+    <title>rimd::SMFBuilder - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>rimd</a></p><script>window.sidebarCurrent = {name: 'SMFBuilder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rimd</a>::<wbr><a class='struct' href=''>SMFBuilder</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-97' class='srclink' href='../src/rimd/builder.rs.html#184-186' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SMFBuilder {
+    // some fields omitted
+}</pre><div class='docblock'><p>An SMFBuilder can be used to create an SMF file.  This is done by
+adding tracks to the builder via <code>add_track</code> and then adding
+events to each track.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../rimd/struct.SMFBuilder.html' title='rimd::SMFBuilder'>SMFBuilder</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../rimd/struct.SMFBuilder.html' title='rimd::SMFBuilder'>SMFBuilder</a></code></h4>
+<div class='docblock'><p>Create a new SMFBuilder.  Initially the builder will have no tracks</p>
+</div><h4 id='method.num_tracks' class='method'><code>fn <a href='#method.num_tracks' class='fnname'>num_tracks</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<div class='docblock'><p>Get the number of tracks currenly in the builder</p>
+</div><h4 id='method.add_track' class='method'><code>fn <a href='#method.add_track' class='fnname'>add_track</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Add new a track to this builder</p>
+</div><h4 id='method.add_static_track' class='method'><code>fn <a href='#method.add_static_track' class='fnname'>add_static_track</a>&lt;'a, I&gt;(&amp;mut self, track: I) <span class='where'>where I: <a class='trait' href='https://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html' title='core::iter::Iterator'>Iterator</a>&lt;Item=&amp;'a <a class='struct' href='../rimd/struct.AbsoluteEvent.html' title='rimd::AbsoluteEvent'>AbsoluteEvent</a>&gt;</span></code></h4>
+<div class='docblock'><p>Add a static track to the builder (note this will clone all events in the passed iterator)</p>
+</div><h4 id='method.set_copyright' class='method'><code>fn <a href='#method.set_copyright' class='fnname'>set_copyright</a>(&amp;mut self, track: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, copyright: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</code></h4>
+<div class='docblock'><p>Set the copyright for the track at index <code>track</code>.  This will
+also cause a copyright meta event to be inserted.</p>
+
+<h2 id='panics' class='section-header'><a href='#panics'>Panics</a></h2>
+<p>Panics if <code>track</code> is &gt;= to the number of tracks in this
+builder, or if the track already has a copyright set.</p>
+</div><h4 id='method.set_name' class='method'><code>fn <a href='#method.set_name' class='fnname'>set_name</a>(&amp;mut self, track: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, name: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</code></h4>
+<div class='docblock'><p>Set the name for the track at index <code>track</code>.  This will
+also cause a name meta event to be inserted.</p>
+
+<h2 id='panics-1' class='section-header'><a href='#panics-1'>Panics</a></h2>
+<p>Panics if <code>track</code> is &gt;= to the number of tracks in this
+builder, or if the track already has a name set.</p>
+</div><h4 id='method.add_midi_abs' class='method'><code>fn <a href='#method.add_midi_abs' class='fnname'>add_midi_abs</a>(&amp;mut self, track: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, time: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>, msg: <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a>)</code></h4>
+<div class='docblock'><p>Add a midi message to track at index <code>track</code> at absolute time
+<code>time</code>.</p>
+
+<h2 id='panics-2' class='section-header'><a href='#panics-2'>Panics</a></h2>
+<p>Panics if <code>track</code> is &gt;= to the number of tracks in this builder</p>
+</div><h4 id='method.add_midi_rel' class='method'><code>fn <a href='#method.add_midi_rel' class='fnname'>add_midi_rel</a>(&amp;mut self, track: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, delta: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>, msg: <a class='struct' href='../rimd/struct.MidiMessage.html' title='rimd::MidiMessage'>MidiMessage</a>)</code></h4>
+<div class='docblock'><p>Add a midi message to track at index <code>track</code> at <code>delta</code> ticks
+after the last message (or at <code>delta</code> if no current messages
+exist)</p>
+
+<h2 id='panics-3' class='section-header'><a href='#panics-3'>Panics</a></h2>
+<p>Panics if <code>track</code> is &gt;= to the number of tracks in this builder</p>
+</div><h4 id='method.add_meta_abs' class='method'><code>fn <a href='#method.add_meta_abs' class='fnname'>add_meta_abs</a>(&amp;mut self, track: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, time: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>, event: <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a>)</code></h4>
+<div class='docblock'><p>Add a meta event to track at index <code>track</code> at absolute  time
+<code>time</code>.</p>
+
+<h2 id='panics-4' class='section-header'><a href='#panics-4'>Panics</a></h2>
+<p>Panics if <code>track</code> is &gt;= to the number of tracks in this builder</p>
+</div><h4 id='method.add_meta_rel' class='method'><code>fn <a href='#method.add_meta_rel' class='fnname'>add_meta_rel</a>(&amp;mut self, track: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, delta: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>, event: <a class='struct' href='../rimd/struct.MetaEvent.html' title='rimd::MetaEvent'>MetaEvent</a>)</code></h4>
+<div class='docblock'><p>Add a meta event to track at index <code>track</code> at <code>delta</code> ticks
+after the last message (or at <code>delta</code> if no current messages
+exist)</p>
+
+<h2 id='panics-5' class='section-header'><a href='#panics-5'>Panics</a></h2>
+<p>Panics if <code>track</code> is &gt;= to the number of tracks in this builder</p>
+</div><h4 id='method.add_event' class='method'><code>fn <a href='#method.add_event' class='fnname'>add_event</a>(&amp;mut self, track: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, event: <a class='struct' href='../rimd/struct.TrackEvent.html' title='rimd::TrackEvent'>TrackEvent</a>)</code></h4>
+<div class='docblock'><p>Add a TrackEvent to the track at index <code>track</code>.  The event
+will be added at <code>event.vtime</code> after the last event currently
+in the builder for the track.</p>
+
+<h2 id='panics-6' class='section-header'><a href='#panics-6'>Panics</a></h2>
+<p>Panics if <code>track</code> is &gt;= to the number of tracks in this builder</p>
+</div><h4 id='method.result' class='method'><code>fn <a href='#method.result' class='fnname'>result</a>(self) -&gt; <a class='struct' href='../rimd/struct.SMF.html' title='rimd::SMF'>SMF</a></code></h4>
+<div class='docblock'><p>Generate an SMF file with the events that have been added to
+the builder</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "rimd";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
